@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShareImageSolution</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/css_interface.css">
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">GenImage</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Search_result.html">Ảnh</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Video</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Category
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Image" asp-action="SearchResult">Thiên Nhiên</a>
+                                <a class="dropdown-item" href="#">Động Vật</a>
+                                <a class="dropdown-item" href="#">Phong Cảnh</a>
+                                <a class="dropdown-item" href="#">Vũ Trụ</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--
+                    <form class="form-inline my-2 my-lg-0">
+                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                       </form>-->
+                    <div>
+
+                        <button tyle="button" class="btn btn-success" style="margin-left: 10px;">Đăng nhập</button>
+                        <button tyle="button" class="btn btn-success" style="margin-left: 10px;">Đăng ký</button>
+                        <button tyle="button" class="btn btn-warning"
+                                style="margin-left: 10px; border-radius: 20px; width: 100px;">
+                            <i class="fas fa-arrow-square-up"></i>Tải lên
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+        <div>
+            <footer class="page-footer font-small indigo">
+                <h4 style="text-align: center;color: #515457;">Ảnh và clip miễn phí bạn có thể sử dụng ở mọi nơi</h4>
+                <p style="text-align: center;">
+                    Baylax là một trang web chia sẻ ảnh miễn phí có bản quyển. Tất cả nội dung
+                    được phát hành đều có giấy phép, bạn có thể sử dụng bất cứ bức ảnh nào mà bạn muốn
+                </p>
+                <div class="footer-copyright text-center py-3">
+                    <p>© 2020 Copyright Designed by .....</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!--
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - ShareImageSolution - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

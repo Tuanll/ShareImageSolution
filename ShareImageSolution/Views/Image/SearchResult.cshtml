@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ShareImageSolution.Models.ImageCategoryViewModel>
+@{ ViewData["Title"] = "Result";}
+
+<div>
+    <p style="margin-top: 10px; margin-left: 20px;">
+        Mua ảnh được tài trợ bởi ISock <a href="#">
+            LIMITED DEAL:
+            50% off With BayLax50 coupon
+        </a>
+    </p>
+</div>
+<div class="row">
+    <hr>
+    @{
+        var list = ViewData["Images"];
+        foreach (var item in (List<Image>)list)
+        {
+
+            if (item.ImageId > 4) break;
+            <div class="col col-md-3">
+                <a asp-route-id="@item.ImageId" asp-controller="Image" asp-action="Detail"><img src="@item.Path" alt="@item.Alt" style="height:150px;width:250px"></a>
+            </div>
+        }
+    }
+</div>
+<div id="popularsearch" style="color:#8aa6ad; text-align: left; margin-top: 10px; margin-left: 30px;">
+    Hình ảnh liên quan:
+    <a href="#">background</a>,
+    <a href="#">youtube</a>,
+    <a href="#">flower</a>,
+    <a href="#">girl</a>,
+    <a href="#">hoa</a>,
+    <a href="#">halloween</a>,
+    <a href="#">sky</a>,
+    <a href="#">nature</a>,
+    <a href="#">city</a>,
+    <a href="#">thiên nhiên</a>,
+    <a href="#">anime</a>,
+    <a href="#">vietnam</a>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col col-md-4">
+            <a asp-route-id="@item.ImageId" asp-controller="Image" asp-action="Detail"><img src="@item.Path" alt="@item.Alt" style="height:250px;width:350px;margin-top:10px;margin-right:-10px"></a>
+        </div>
+    }
+
+</div>
+
+<div class="row justify-content-center">
+    <div style="margin-top: 20px;">
+        <button type="button" class="btn btn-success"
+                style="border-radius: 20px; width:200px ; height: 50px;">
+            Tìm hiểu thêm
+        </button>
+    </div>
+</div>      
+<hr>

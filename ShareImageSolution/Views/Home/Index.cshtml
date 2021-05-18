@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ShareImageSolution.Models.Image>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container-fluid">
+    <div id="content">
+        <div class="row">
+            <div id="astro">
+                <div id="top">
+                    <h1 style="color: #fff; text-align: center;">Hình ảnh đẹp miễn phí</h1>
+                    <p style="color: #fff; text-align: center;">Khám phá hơn 2.2 triệu hình ảnh của chúng tôi</p>
+                    <form asp-controller="Image" asp-action="SearchResult" method="get">
+                        <div class="form-actions no-color">
+                            <p>
+                                Find by name:
+                                <input type="text" name="name" />
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </p>
+                        </div>
+                    </form>
+                </div> 
+                <div id="popularsearch" style="color:#8aa6ad; text-align: center;">
+                    Popular Images:
+                    <a href="#">background</a>,
+                    <a href="#">youtube</a>,
+                    <a href="#">flower</a>,
+                    <a href="#">girl</a>,
+                    <a href="#">hoa</a>,
+                    <a href="#">halloween</a>,
+                    <a href="#">sky</a>,
+                    <a href="#">nature</a>,
+                    <a href="#">city</a>,
+                    <a href="#">thiên nhiên</a>,
+                    <a href="#">anime</a>,
+                    <a href="#">vietnam</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index">
+        <div>
+            @foreach (var item in Model)
+            {
+            <a asp-route-id="@item.ImageId" asp-controller="Image" asp-action="Detail">
+                <image src="@item.Path" width="330" height="300"></image>
+            </a> 
+            }
+            @{ var pages = ViewData["pages"]; var p = ViewData["page"];}
+            <form asp-action="Index" method="get" style="margin-top:20px">
+                <input type="submit" value="Go to" /> page <input type="number" max="@pages" min="1" name="pag" value="1"/> of @pages
+            </form>
+        </div>
+    </div>
+    <hr>
+</div>

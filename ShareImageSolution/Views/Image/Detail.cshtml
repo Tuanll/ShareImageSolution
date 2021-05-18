@@ -1,0 +1,101 @@
+﻿@model ShareImageSolution.Models.Image
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div id="content">
+    <div class="row">
+        <div id="detail-left" class="col-12 col-md-12 col-lg-9 col-xl-9 mt-3">
+            <div>
+                <img class="img-fluid" src="@Model.Path" alt="" style="width:950px">
+                <hr>
+            </div>
+            <div>
+                <p style="margin-top: 10px; margin-left: 20px;">
+                    Mua ảnh được tài trợ bởi ISock <a href="#">
+                        LIMITED
+                        DEAL: 50% off With BayLax50 coupon
+                    </a>
+                </p>
+                <hr>
+                <div id="top" style="margin-left: 30px;">
+                    @{ var list = ViewData["Images"];
+                        foreach (var item in (List<Image>)list)
+                        {
+                            <a asp-route-id="@item.ImageId" asp-controller="Image" asp-action="Detail">
+                                <image class="img-thumbnail" style="height:150px;width:250px" src="@item.Path"></image>
+                            </a>
+                            if (item.ImageId > 5) break;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div id="detail_right" class="col-sm-12 col-md-12 col-lg-3 col-xl-3 mt-3">
+            <div style="float: left; margin-right: 5px;">
+                <a href="#">
+                    <img style="border-radius: 30px; height:50px;width:60px" src="pic/anhnguoi.jpg" alt="@Model.Alt" />
+                </a>
+            </div>
+            <div>
+                <p> Helen/20 Hình ảnh</p>
+                <button type="button" class="btn btn-success"
+                        style="height: 30px; width: 100px; font-size: 10px; margin-top: -20px;border-radius: 15px;">
+                    Theo dõi
+                </button>
+                <button type="button" class="btn btn-light btn-outline-dark"
+                        style="height: 30px; width: 100px; font-size: 10px; border-radius: 15px;margin-top: -20px;">
+                    Ủng Hộ
+                </button>
+                <hr>
+            </div>
+            <div style="margin-top: 30px;">
+                <button type="button" class="btn btn-primary"
+                        style="height: 30px; width: 80px; font-size: 10px; margin-top: -20px;border-radius: 15px;">
+                    <i class="fa fa-thumbs-up" style="font-size: 20px; color:white;"></i><strong style="font-size: 15px;"> 5</strong>
+                </button>
+                <button type="button" class="btn btn-primary"
+                        style="height: 30px; width: 80px; font-size: 10px; margin-top: -20px;border-radius: 15px;">
+                    <i class="fa fa-star-o" style="font-size:20px; color: white;"></i><strong style="font-size: 15px; "> 4</strong>
+                </button>
+                <button type="button" class="btn btn-light  btn-outline-dark"
+                        style="height: 30px; width: 80px; font-size: 10px; margin-top: -20px;border-radius: 15px;">
+                    <i class="fa fa-share-alt" style="font-size:20px"></i><strong style="font-size: 15px;">100</strong>
+                </button>
+                <hr>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success" style="border-radius: 30px; margin-left: 60px;">
+                    <i class="fa fa-download" style="font-size:24px"></i> Tải xuống miễn phí
+                </button>
+                <hr>
+            </div>
+            <div>
+                <p>Những hình ảnh liên quan</p>
+                @{
+                    foreach (var item in (List<Image>)list)
+                    {
+                        if (item.ImageId > 6)
+                        {
+                            <a asp-route-id="@item.ImageId" asp-controller="Image" asp-action="Detail">
+                                <image class="img-thumbnail" width="120" height="100" src="@item.Path" alt="@item.Alt"></image>
+                            </a>
+
+                        }
+
+                    }
+                }
+            </div>
+            <div>
+                <hr>
+                <p id="p_detail">Thông tin ảnh</p>
+                <p id="p_detail">Loại ảnh: @Model.Type</p>
+                <p id="p_detail">Độ phân giải: @Model.Size</p>
+                <p id="p_detail">Đã tạo: @Model.DateCreated</p>
+                <p id="p_detail">Mô tả: @Model.Description</p>
+                <p id="p_detail">Lượt xem: @Model.View</p>
+                <p id="p_detail">Lượt tải xuống: @Model.DownLoad</p>
+            </div>
+        </div>
+    </div>
+</div>
